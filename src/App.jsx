@@ -1,34 +1,6 @@
-import React from "react"
-
-class ButtonClass extends React.Component {
-  render() {
-    return <button
-      className="h-10 px-6 font-semibold bg-yellow-500 rounded-md"
-      type="submit"
-    >Button Class</button>
-  }
-}
-
-function ButtonFunc() {
-  return (
-    <button
-      className="h-10 px-6 font-semibold bg-red-700 rounded-md"
-      type="submit"
-    >Button Func</button>
-  );
-}
-
-// ReusableButton with arrow function + props (properties)
-const ButtonArrowFunc = (props) => {
-  // default value
-  const { children = ". . .", background = "bg-black" } = props;
-  return (
-    <button
-      className={`h-10 px-6 font-semibold ${background} rounded-md`}
-      type="submit"
-    >{children}</button>
-  );
-}
+import ButtonArrowFunc from "./components/Button/SimpleButton";
+import ButtonClass from "./components/Button/ClassButton";
+import ButtonFunc from "./components/Button/FunctionButton";
 
 function App() {
   return (
