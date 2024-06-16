@@ -1,9 +1,11 @@
 import ButtonRoundedSB from "../Elements/Button/ButtonRoundedSB"
 
 const CardProduct = (props) => {
-    const { title, price, image } = props
+    const { children } = props
     return (
-        <div></div>
+        <div className="w-full mx-2 max-w-xs bg-gray-800 border border-gray-700 rounded-lg shadow">
+            {children}
+        </div>
     )
 }
 
