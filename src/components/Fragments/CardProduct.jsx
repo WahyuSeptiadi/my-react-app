@@ -31,9 +31,9 @@ const Body = (props) => {
 const Footer = (props) => {
     const { buttonText, price } = props
     return (
-        <div className="flex items-center justify-between px-5 pb-3">
+        <div className="flex items-center justify-between px-5 pb-5">
             <p className="font-semibold tracking-tight text-lg text-gray-200">{price}</p>
-            <ButtonRoundedSB text={buttonText} width="mb-3 p-2" background="bg-blue-500" />
+            <ButtonRoundedSB text={buttonText} modifier="py-2 px-3" background="bg-blue-500" />
         </div>
     )
 }
