@@ -11,7 +11,7 @@ const ButtonRoundedSB = (props) => {
         <button
             className={`${background} ${modifier} h-10 font-semibold rounded-md text-white`}
             type={type}
-            onClick={() => onClick()}
+            onClick={onClick}
         >{text}</button>
     );
 }

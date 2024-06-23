@@ -3,7 +3,7 @@ import ButtonRoundedSB from "../Elements/Button/ButtonRoundedSB"
 const CardProduct = (props) => {
     const { children } = props
     return (
-        <div className="w-full mx-2 max-w-xs bg-gray-800 border border-gray-700 rounded-lg shadow flex flex-col justify-between">
+        <div className="w-full mx-2 my-2 max-w-xs bg-gray-800 border border-gray-700 rounded-lg shadow flex flex-col justify-between">
             {children}
         </div>
     )
@@ -29,11 +29,11 @@ const Body = (props) => {
 }
 
 const Footer = (props) => {
-    const { buttonText, price } = props
+    const { buttonText, id, price, handleAddToCart } = props
     return (
         <div className="flex items-center justify-between px-5 pb-5">
-            <p className="font-semibold tracking-tight text-lg text-gray-200">{price}</p>
-            <ButtonRoundedSB text={buttonText} modifier="py-2 px-3" background="bg-blue-500" />
+            <p className="font-semibold tracking-tight text-lg text-gray-200">Rp. {price.toLocaleString("id-ID", { styles: 'currency', currency: 'IDR' })}</p>
+            <ButtonRoundedSB text={buttonText} modifier="py-2 px-3" background="bg-blue-500" onClick={() => handleAddToCart(id)} />
         </div>
     )
 }
