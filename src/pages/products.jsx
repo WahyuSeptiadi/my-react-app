@@ -1,6 +1,6 @@
 import ButtonRoundedSB from "../components/Elements/Button/ButtonRoundedSB"
 import CardProduct from "../components/Fragments/CardProduct"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const productList = [
     {
@@ -53,6 +53,18 @@ const handleProduct = () => {
 
 const ProductPage = () => {
     const [cart, setCart] = useState([])
+    const [totalPrice, setTotalPrice] = useState(0)
+
+    useEffect(() => {
+        setCart(JSON.parse(localStorage.getItem("cart")) || [])
+    }, [])
+
+    useEffect(() => {
+        if (cart.length === 0) return
+        // calculate total price -> dimulai dari index ke 0
+        setTotalPrice(cart.reduce((total, item) => total + (productList.find((product) => product.id === item.id).price * item.qty), 0))
+        localStorage.setItem("cart", JSON.stringify(cart))
+    }, [cart]) // ketika cart berubah, jalankan useEffect
 
     // spread operator (...) -> copy array and add new item
     const handleAddToCart = (id) => {
@@ -113,11 +125,7 @@ const ProductPage = () => {
                             })}
                             <tr>
                                 <td colSpan="3" className="text-right font-semibold">Total Price</td>
-                                <td>Rp. {
-                                    cart.reduce((total, item) => total + (
-                                        productList.find((product) => product.id === item.id).price * item.qty
-                                    ), 0).toLocaleString("id-ID", { styles: 'currency', currency: 'IDR' })
-                                }</td>
+                                <td>Rp. {totalPrice.toLocaleString("id-ID", { styles: 'currency', currency: 'IDR' })}</td>
                             </tr>
                         </tbody>
                     </table>
